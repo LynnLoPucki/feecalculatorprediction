@@ -9,7 +9,7 @@ library(survey)
 prediction <- function(inputformula, inputvalues) {
 	useformula <- as.formula(inputformula)
 	usevalues <- as.data.frame(inputvalues)
-	design34 <- svydesign(id = ~casenumber, weights = ~pweight, data = data)
+	design34 <- svydesign(id = ~casenumber, weights = ~pweight, data = predictiondata)
 	model34 <- svyglm(lnfeeexpord ~ lnroles + lnassets + lndaysin + yearconfirmed + lnemployees + shop + saleall, design = design34)
 	newdata1 <- with(data, usevalues)
 	pred <- predict(model34, newdata = newdata1, se.fit = T)
