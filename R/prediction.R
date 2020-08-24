@@ -1,4 +1,3 @@
-install.packages("survey")
 #' Prediction
 #'
 #' Bankruptcy prediction function
@@ -6,6 +5,7 @@ install.packages("survey")
 #' @export
 #' @param input. Required.
 prediction <- function(inputformula, inputvalues) {
+	install.packages("survey")
 	library(survey)
 	useformula <- as.formula(inputformula)
 	usevalues <- as.data.frame(inputvalues)
