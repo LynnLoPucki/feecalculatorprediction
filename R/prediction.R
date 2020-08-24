@@ -10,7 +10,7 @@ prediction <- function(inputformula, inputvalues) {
 	usevalues <- as.data.frame(inputvalues)
 	design34 <- svydesign(id = ~casenumber, weights = ~pweight, data = predictiondata)
 	model34 <- svyglm(lnfeeexpord ~ lnroles + lnassets + lndaysin + yearconfirmed + lnemployees + shop + saleall, design = design34)
-	newdata1 <- with(data, usevalues)
+	newdata1 <- with(predictiondata, usevalues)
 	pred <- predict(model34, newdata = newdata1, se.fit = T)
 	efit <- pred[1]
 	lfit <- efit - 1.44 * sqrt(attr(pred, "var")) / .97
