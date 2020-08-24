@@ -1,5 +1,4 @@
 install.packages("survey")
-library(survey)
 #' Prediction
 #'
 #' Bankruptcy prediction function
@@ -7,6 +6,7 @@ library(survey)
 #' @export
 #' @param input. Required.
 prediction <- function(inputformula, inputvalues) {
+	library(survey)
 	useformula <- as.formula(inputformula)
 	usevalues <- as.data.frame(inputvalues)
 	design34 <- svydesign(id = ~casenumber, weights = ~pweight, data = predictiondata)
