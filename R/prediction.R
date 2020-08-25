@@ -9,7 +9,7 @@ prediction <- function(inputformula, inputvalues) {
 	useformula <- as.formula(inputformula)
 	usevalues <- as.data.frame(inputvalues)
 	design31 <- svydesign(id = ~casenumber, weights = ~pweight, data = predictiondata)
-	model31 <- svyglm(lnfeeexpord ~ lnassets + prepack + preneg + lnsales + xyearfiled + shop, design = design31)
+	model31 <- svyglm(useformula, design = design31)
 	newdata1 <- with(predictiondata, usevalues)
 	pred <- predict(model31, newdata = newdata1, se.fit = T)
 	efit <- pred[1]
